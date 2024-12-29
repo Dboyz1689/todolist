@@ -24,7 +24,13 @@ const Addtask = ({newTask, setNewTask, handleAddTask}) => {
                     variant="outlined"
                     placeholder='Add new task'
                     value={newTask}
-                    sx={{ml: '20px'}}
+                    sx={{ml: {
+                            xs: '5px',
+                            sm: '10px',
+                            md: '15px',
+                            lg: '20px',
+                            xl: '20px',
+                        }}}
                     onChange={(e) => {
                         // e.preventDefault()
                         setNewTask(e.target.value)
@@ -41,7 +47,13 @@ const Addtask = ({newTask, setNewTask, handleAddTask}) => {
                 <Fab onClick={(event) => {
                     event.preventDefault()
                     handleAddTask()
-                }} color="primary" aria-label="add" sx={{mr: '20px'}}>
+                }} color="primary" aria-label="add" sx={{mr: {
+                        xs: '5px',
+                        sm: '10px',
+                        md: '15px',
+                        lg: '20px',
+                        xl: '20px',
+                    }}}>
                     <AddTask/>
                 </Fab>
             </Paper>
