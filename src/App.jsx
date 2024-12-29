@@ -20,6 +20,7 @@ const App = () => {
                 setTasks(storedTasks)
             }else{
                 setTasks([])
+                localStorage.setItem('tasks', JSON.stringify([]))
             }
             setLoading(false)
         }
