@@ -16,7 +16,11 @@ const App = () => {
     useEffect(() => {
         const fetchTasks = async() => {
             const storedTasks = await JSON.parse(localStorage.getItem('tasks'))
-            setTasks(storedTasks)
+            if (storedTasks) {
+                setTasks(storedTasks)
+            }else{
+                setTasks([])
+            }
             setLoading(false)
         }
         fetchTasks().then()
