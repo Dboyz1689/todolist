@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react'
 import {
-    Container,
-    CssBaseline
+    Container, createTheme,
+    CssBaseline, ThemeProvider
 } from '@mui/material'
 import Appbar from "./Components/Appbar.jsx";
 import Tasklist from "./Components/Tasklist.jsx";
@@ -11,7 +11,6 @@ const App = () => {
     const [tasks, setTasks] = useState([{}])
     const [newTask, setNewTask] = useState('')
     const [loading, setLoading] = useState(true)
-
 
     useEffect(() => {
         const fetchTasks = async() => {
@@ -26,6 +25,12 @@ const App = () => {
         }
         fetchTasks().then()
     }, [])
+
+    const theme = createTheme({
+        colorSchemes: {
+            dark: true,
+        },
+    });
 
     const handleAddTask = () => {
         if (newTask !== '') {
@@ -81,14 +86,14 @@ const App = () => {
 
 
     return (
-        <>
+        <ThemeProvider theme={theme}>
             <CssBaseline />
             <Appbar delDoneTasks={delDoneTasks} delAllTasks={delAllTasks}/>
             <Container>
-               <Tasklist tasks={tasks} loading={loading} updateDone={updateDone} updateTask={updateTask} handleDeleteTask={handleDeleteTask} />
+                <Tasklist tasks={tasks} loading={loading} updateDone={updateDone} updateTask={updateTask} handleDeleteTask={handleDeleteTask} />
                 <Addtask newTask={newTask} setNewTask={setNewTask} handleAddTask={handleAddTask}/>
             </Container>
-        </>
+        </ThemeProvider>
     )
 }
 
